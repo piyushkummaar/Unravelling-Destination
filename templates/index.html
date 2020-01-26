@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section style="background: url(static/a_images/4.JPG); background-size: cover; background-position: center center"
+  class="hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <h1>MOMENTS ARE ALWAYS MEANT TO BE.</h1>
+      </div>
+    </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i>Discover More</a>
+  </div>
+</section>
+<section class="intro">
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-8">
+        <h2 class="h3">Some great intro here</h2>
+        <p class="text-big">Sikkim is a state in <strong>northeast India </strong> , bordered by Bhutan, Tibet and
+          Nepal. Part of the Himalayas, the area has a dramatic landscape that includes<strong> India’s highest
+            mountain, 8,586m Kangchenjunga</strong>. Sikkim is also home to glaciers, alpine meadows and thousands of
+          varieties of wildflowers. Steep paths lead to hilltop Buddhist monasteries such as Pemayangtse, which dates to
+          the early 1700s.
+        </p>
+      </div>
+        <div class="card col-md-auto mx-auto">
+          <div class="card-header mx-auto">
+            <h2 class="h3">All about Sikkim</h2>
+            <hr>
+              <ul>
+                <li><a href="{% url 'east' %}" class="text-big">East Sikkim</a></li>
+                <li><a href="{% url 'west' %}" class="text-big">West Sikkim</a></li>
+                <li><a href="{% url 'north' %}" class="text-big">North Sikkim</a></li>
+                <li><a href="{% url 'south' %}" class="text-big">South Sikkim</a></li>
+                <hr>
+              </ul>
+              <h6 style="text-align:center">...</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class="featured-posts no-padding-top">
+    <div class="container">
+      <!--featured Post-->
+      {% for obj in object_list %}
+      <div class="row d-flex align-items-stretch">
+        {% if not forloop.first and not forloop.last %}
+        <div class="image col-lg-5"><img src="{{ obj.thumbnail.url }}" alt="..."></div>
+        {% endif %}
+        <div class="text col-lg-7">
+          <div class="text-inner d-flex align-items-center">
+            <div class="content">
+              <header class="post-header">
+                <div class="category">
+                  {% for cat in obj.categories.all %}
+                  <a href="#">{{ cat }}</a>
+                  {% endfor %}
+                </div>
+                <a href="post/{{obj.pk}}">
+                  <h2 class="h4">{{ obj.title }}</h2>
+                </a>
+              </header>
+              <p>{{ obj.overview|linebreaks|truncatechars:200 }}</p>
+              <footer class="post-footer d-flex align-items-center"><a href="#"
+                  class="author d-flex align-items-center flex-wrap">
+                  <div class="avatar"><img src="{{ obj.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
+                  <div class="title"><span>{{ obj.author }}</span></div>
+                </a>
+                <div class="date meta-end"><i class="icon-clock"></i> {{ obj.timestamp|timesince }} ago</div>
+              </footer>
+            </div>
+          </div>
+        </div>
+        {% if forloop.first or forloop.last %}
+        <div class="image col-lg-5"><img src="{{ obj.thumbnail.url }}" alt="..."></div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+<!-- Divider Section-->
+<section style="background: url(/static/a_images/3.JPG); background-size: cover; background-position: center bottom"
+  class="divider">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h3>To me travelling was all about exploring and adventure, and exploring new places but at one point it was a
+          part of me , and it always made a betterperson than I was before and it madea new person with a new thought
+          with new vision.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Latest Posts -->
+<section class="latest-posts">
+  <div class="container">
+    <header>
+      <h2>Latest from the blog</h2>
+      <p class="text-big">Here some latest blog Added recently.</p>
+    </header>
+    <div class="row">
+      {% for obj in latest %}
+      <div class="post col-md-4">
+        <div class="post-thumbnail"><a href="#"><img src="{{ obj.thumbnail.url }}" alt="..." class="img-fluid"></a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">{{ obj.timestamp }}</div>
+            <div class="category">
+              {% for cat in obj.categories.all %}
+              <a href="#">{{ cat }}</a>
+              {% endfor %}
+            </div>
+          </div><a href="{{ obj.get_absolute_url }}">
+            <h3 class="h4">{{ obj.title }}</h3>
+          </a>
+          <p class="text-muted">{{ obj.overview|linebreaks|truncatechars:200 }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- Newsletter Section-->
+<section class="newsletter no-padding-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Subscribe to Newsletter</h2>
+        <p class="text-big">Enter email and get notification when new blog post published. </p>
+      </div>
+      <div class="col-md-8">
+        <div class="form-holder">
+          <form action="{% url 'newsletter' %}" method="POST">
+            {% csrf_token %}
+                {{form}}
+              <button type="submit" class="submit">Signup</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

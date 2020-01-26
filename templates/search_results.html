@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+<br>
+{% if queryset %}    
+    <div class="card border-secondary col-md-6 mx-auto">
+        <div class="card-header mx-auto">Results of your Search</div>
+      {% for post in queryset %}
+        <div  class="card-body text-secondary">
+                    <ul id="results">
+                        <li><a href="{{ post.get_absolute_url }}">{{ post.title}}</a></li>
+                    </ul>
+        </div>
+        <hr class="sm">
+     {% endfor %}
+    </div>
+{% else %}
+<p style="text-align:center;"><img height="250" src="{% static 'img/wrongs.png' %}" alt="img"></p>
+<h4 style="text-align:center;">Sorry, we couldn't find any matches.</h4>
+<br>
+{% endif %}
+</div>
+<br>
+{% endblock %}
