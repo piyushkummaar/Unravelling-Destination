@@ -7,8 +7,8 @@ from django.views.generic import View, ListView, DetailView, CreateView, UpdateV
 from django.template import RequestContext
 from posts.forms import CommentForm, PostForm
 from posts.models import Post, Author, PostView
-from marketing.forms import EmailSignupForm
-from marketing.models import Signup
+from posts.forms import EmailSignupForm
+from posts.models import Signup
 from .forms import ContactForm
 
 form = EmailSignupForm()

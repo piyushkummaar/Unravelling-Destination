@@ -1,3 +1,4 @@
+from .models import Signup
 from django import forms
 from tinymce import TinyMCE
 from .models import Post, Comment, ContactUs
@@ -17,8 +18,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'overview', 'content', 'thumbnail',
-                  'categories', 'featured', 'previous_post', 'next_post')
+        fields = ('title', 'overview', 'content', 'thumbnail','categories', 'featured', 'previous_post', 'next_post')
 
 
 class CommentForm(forms.ModelForm):
@@ -38,3 +38,16 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactUs
         fields = ('fname','lname','email','subject','message',)
+
+
+class EmailSignupForm(forms.ModelForm):
+    email = forms.EmailField(widget=forms.TextInput(attrs={
+        "type": "email",
+        "name": "email",
+        "id": "email",
+        "placeholder": "Type your email address",
+    }), label="")
+
+    class Meta:
+        model = Signup
+        fields = ('email', )

@@ -24,8 +24,6 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'tinymce',
-
-    'marketing',
     'posts'
 ]
 
@@ -134,11 +132,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'statusbar': True,
 }
 
-MAILCHIMP_API_KEY = ''
-MAILCHIMP_DATA_CENTER = ''
-MAILCHIMP_EMAIL_LIST_ID = ''
 
-# Django Allauth
 LOGIN_REDIRECT = '/'
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

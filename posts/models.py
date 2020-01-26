@@ -83,7 +83,7 @@ class Post(models.Model):
 
     class Meta:
         verbose_name = 'Post'
-        verbose_name_plural = 'Posts'
+        verbose_name_plural = 'Add Blog'
         db_table = 'tbl_post'
         managed = True
 
@@ -126,10 +126,24 @@ class ContactUs(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'ContactUs'
-        verbose_name_plural = 'ContactUs'
+        verbose_name = 'Contact Us'
+        verbose_name_plural = 'Contact Us'
         db_table = 'tbl_contactus'
         managed = True
 
     def __str__(self):
         return self.fname + '-  ' +self.email
+    
+    
+class Signup(models.Model):
+    email = models.EmailField(null=True, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Newsletter'
+        verbose_name_plural = 'Newsletters'
+        db_table = 'tbl_newsletter'
+        managed = True
+
+    def __str__(self):
+        return self.email

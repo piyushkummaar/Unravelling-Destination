@@ -22,7 +22,7 @@ from posts.views import (
 
 
 )
-from marketing.views import email_list_signup
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
