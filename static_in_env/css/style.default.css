@@ -732,14 +732,13 @@ section.featured-posts .comments i {
 section.featured-posts .title::after,
 section.featured-posts .date::after,
 section.featured-posts .comments::after {
-  content: "|";
-  display: inline-block;
+  display: none;
   margin: 0 7px;
   font-size: 0.9em;
   color: #ccc;
 }
 
-section.featured-posts .comments::after {
+section.featured-posts .date::after {
   display: none;
 }
 
@@ -901,7 +900,6 @@ section.latest-posts header {
 .post .date::after,
 .post .comments::after,
 .post .views::after {
-  content: "|";
   display: inline-block;
   margin: 0 7px;
   font-size: 0.9em;

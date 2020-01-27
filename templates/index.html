@@ -67,9 +67,12 @@
               <footer class="post-footer d-flex align-items-center"><a href="#"
                   class="author d-flex align-items-center flex-wrap">
                   <div class="avatar"><img src="{{ obj.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
-                  <div class="title"><span>{{ obj.author }}</span></div>
+                  <div class="title"><span>
+                    {{ obj.author.user.first_name }} {{ obj.author.user.last_name }}
+                  </span></div>
                 </a>
-                <div class="date meta-end"><i class="icon-clock"></i> {{ obj.timestamp|timesince }} ago</div>
+                
+                <div class="date"> &nbsp;<i class="icon-clock"></i> {{ obj.timestamp|timesince }} ago</div>
               </footer>
             </div>
           </div>
@@ -108,7 +111,8 @@
         </div>
         <div class="post-details">
           <div class="post-meta d-flex justify-content-between">
-            <div class="date">{{ obj.timestamp }}</div>
+            <div class="date">{{ obj.author.user.first_name }} {{ obj.author.user.last_name }}</div>
+            <div class="date"><i class="icon-clock"></i>{{ obj.timestamp }}</div>
             <div class="category">
               {% for cat in obj.categories.all %}
               <a href="#">{{ cat }}</a>

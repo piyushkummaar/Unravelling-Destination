@@ -33,7 +33,7 @@
                 <h1>{{ post.title }}<a href="#"></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="{{ post.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>{{ post.author.user.username }}</span></div></a>
+                    <div class="title"><span>{{ post.author.user.first_name }} {{ post.author.user.last_name }}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">       
                     <div class="date"><i class="icon-clock"></i> {{ post.timestamp|timesince }} ago</div>
                     <div class="views meta-last"><i class="icon-eye"></i> {{ post.view_count }}</div>
@@ -63,16 +63,16 @@
                 </div>
                 <div class="post-comments">
                   <div id="disqus_thread"></div>
-                  <script>
-                    (function () { // DON'T EDIT BELOW THIS LINE
-                      var d = document, s = d.createElement('script');
-                      s.src = 'https://tripsh.disqus.com/embed.js';
-                      s.setAttribute('data-timestamp', +new Date());
-                      (d.head || d.body).appendChild(s);
-                    })();
-                  </script>
-                  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
-                      Disqus.</a></noscript>
+              <script>
+                (function () { // DON'T EDIT BELOW THIS LINE
+                  var d = document, s = d.createElement('script');
+                  s.src = 'https://unravelling-destination.disqus.com/embed.js';
+                  s.setAttribute('data-timestamp', +new Date());
+                  (d.head || d.body).appendChild(s);
+                })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                  Disqus.</a></noscript>
                   <!-- <header>
                     <h3 class="h6">Post Comments<span class="no-of-comments">({{ post.comments.count }})</span></h3>
                   </header> -->
