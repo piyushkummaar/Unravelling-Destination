@@ -1,12 +1,13 @@
 from django.contrib import admin
 
-from .models import Author, Category, Post, ContactUs, Signup
+from .models import Author, Category, Post, ContactUs, Signup,AllaboutSikkim
 
 admin.site.register(Author)
 admin.site.register(Category)
 admin.site.register(Post)
 admin.site.register(ContactUs)
 admin.site.register(Signup)
+admin.site.register(AllaboutSikkim)
 
 admin.site.site_header = "Unravelling Destination"
 admin.site.site_title = "Unravelling Destination"

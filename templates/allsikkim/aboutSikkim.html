@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <div class="card card shadow ">
+        <section
+            style="background: url({{sikkim.bg_image.url}}); background-size: cover; background-position: center center"
+            class="hero">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <h1>{{ sikkim.bg_heading}}</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <p class='text-big'>{{ sikkim.heading1}}</p>
+            <!--content1-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <img class="img-thumbnail" height="320" src="{{ sikkim.image1.url }}" alt="img..">
+                    </div>
+                    <div class="col-sm">
+                        <p class='text-big'>{{ sikkim.sub_heading1}}</p>
+                    </div>
+                </div>
+            </div>
+            <p class='text-big'>{{sikkim.heading2}}</p>
+            <!--content2-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <p class='text-big'>{{sikkim.sub_heading2}}</p>
+                    </div>
+                    <div class="col-sm">
+                        <img class="img-thumbnail" height="320" src="{{ sikkim.image2.url}}" alt="img..">
+                    </div>
+                </div>
+                <p class='text-big'>{{ sikkim.heading3}}</p>
+            </div>
+            <br>
+        </div>
+    </div>
+    <br>
+</div>
+{% endblock %}

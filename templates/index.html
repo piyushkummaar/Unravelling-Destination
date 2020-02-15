@@ -29,10 +29,9 @@
             <h2 class="h3">All about Sikkim</h2>
             <hr>
               <ul>
-                <li><a href="{% url 'east' %}" class="text-big">East Sikkim</a></li>
-                <li><a href="{% url 'west' %}" class="text-big">West Sikkim</a></li>
-                <li><a href="{% url 'north' %}" class="text-big">North Sikkim</a></li>
-                <li><a href="{% url 'south' %}" class="text-big">South Sikkim</a></li>
+                {% for da in sikkim %}
+                <li><a href="AboutSikkim/{{da.pk}}" class="text-big">{{da}}</a></li>
+                {% endfor %}
                 <hr>
               </ul>
               <h6 style="text-align:center">...</h6>

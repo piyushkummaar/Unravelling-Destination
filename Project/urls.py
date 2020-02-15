@@ -14,12 +14,8 @@ from posts.views import (
     about,
     contact,
     policy,
-    east,
-    west,
-    south,
-    north,
     newsletter,
-
+    AboutSikkim,
 
 )
 
@@ -39,10 +35,7 @@ urlpatterns = [
     path('about/',about,name='about'),
     path('contact/',contact,name='contact'),
     path('privacy&policy/',policy,name='policy'),
-    path('EastSikkim', east, name='east'),
-    path('WestSikkim', west, name='west'),
-    path('NorthSikkim', north, name='north'),
-    path('SouthSikkim', south, name='south')
+    path('AboutSikkim/<pk>/', AboutSikkim.as_view(), name='sikkim'),
 
 ]
 

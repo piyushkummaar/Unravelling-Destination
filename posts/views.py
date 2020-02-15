@@ -3,10 +3,10 @@ from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView,TemplateView
+from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.template import RequestContext
 from posts.forms import CommentForm, PostForm
-from posts.models import Post, Author, PostView
+from posts.models import Post, Author, PostView, AllaboutSikkim
 from posts.forms import EmailSignupForm
 from posts.models import Signup
 from .forms import ContactForm
@@ -32,6 +32,7 @@ class SearchView(View):
         INPUT : GET THE INPUT FROM THE QUERY SET
         OUTPUT : GIVES THE USER APPROPIATE RESUTE ABOUT ITS SERACH
         '''
+
     def get(self, request, *args, **kwargs):
         queryset = Post.objects.all()
         query = request.GET.get('q')
@@ -42,12 +43,13 @@ class SearchView(View):
             ).distinct()
         context = {
             'queryset': queryset
-            
+
         }
         if queryset:
             return render(request, 'search_results.html', context)
         else:
             return render(request, 'search_results.html', context=True)
+
 
 def search(request):
     queryset = Post.objects.all()
@@ -77,9 +79,11 @@ class IndexView(View):
     def get(self, request, *args, **kwargs):
         featured = Post.objects.filter(featured=True)[0:1]
         latest = Post.objects.order_by('-timestamp')[0:3]
+        sikkim = AllaboutSikkim.objects.all()
         context = {
             'object_list': featured,
             'latest': latest,
+            'sikkim': sikkim,
             'form': self.form,
             'title': 'Home'
         }
@@ -97,8 +101,8 @@ def newsletter(request):
                 form.save()
                 messages.info(request, "Sucessfully subscribed")
     return HttpResponseRedirect('/')
-    
-    
+
+
 class PostListView(ListView):
     model = Post
     template_name = 'blog.html'
@@ -114,6 +118,12 @@ class PostListView(ListView):
         context['category_count'] = category_count
         context['title'] = 'Blog'
         return context
+
+
+class AboutSikkim(DetailView):
+    model = AllaboutSikkim
+    template_name = 'allsikkim/aboutSikkim.html'
+    context_object_name = 'sikkim'
 
 
 class PostDetailView(DetailView):
@@ -209,39 +219,25 @@ def contact(request):
             form.save()
     else:
         form = ContactForm()
-    return render(request, 'contact.html' , {'title':title,'form' : form})
+    return render(request, 'contact.html', {'title': title, 'form': form})
+
 
 def policy(request):
     title = 'Privacy'
     return render(request, 'privacy&policy.html', {'title': title})
 
-def east(request):
-    title = 'EastSikkim'
-    return render(request, 'allsikkim/east.html', {'title': title})
 
-def west(request):
-    title = 'WestSikkim'
-    return render(request, 'allsikkim/west.html', {'title': title})
-
-def north(request):
-    title = 'NorthSikkim'
-    return render(request, 'allsikkim/north.html', {'title': title})
-
-def south(request):
-    title = 'SouthSikkim'
-    return render(request, 'allsikkim/south.html', {'title': title})
-
-def server_error(request ,*args,**kwargs):
-    return render(request, 'errors/404.html',status=404)
+def server_error(request, *args, **kwargs):
+    return render(request, 'errors/404.html', status=404)
 
 
-def not_found(request ,*args,**kwargs):
-    return render(request, 'errors/500.html',status=500)
+def not_found(request, *args, **kwargs):
+    return render(request, 'errors/500.html', status=500)
 
 
-def permission_denied(request ,*args,**kwargs):
-    return render(request, 'errors/404.html',status=403)
+def permission_denied(request, *args, **kwargs):
+    return render(request, 'errors/404.html', status=403)
 
 
-def bad_request(request ,*args,**kwargs):
-    return render(request, 'errors/500.html',status=400)
+def bad_request(request, *args, **kwargs):
+    return render(request, 'errors/500.html', status=400)

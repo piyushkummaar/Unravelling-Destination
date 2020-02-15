@@ -149,3 +149,29 @@ class Signup(models.Model):
 
     def __str__(self):
         return self.email
+    
+    
+class AllaboutSikkim(models.Model):
+    bg_image = models.ImageField() 
+    bg_heading = models.CharField(max_length=10)
+    heading1 =  models.TextField()
+    heading2 = models.TextField()
+    image1 = models.ImageField()
+    sub_heading1 = models.TextField()
+    image2 = models.ImageField()
+    sub_heading2 = models.TextField()
+    heading3 = models.TextField()
+    
+    class Meta:
+        verbose_name = 'All About Sikkim'
+        verbose_name_plural = 'Add About Sikkim'
+        db_table = 'tbl_aboutsikkim'
+        managed = True
+
+    def __str__(self):
+        return self.bg_heading
+    
+    def get_absolute_url(self):
+        return reverse('sikkim', kwargs={
+            'pk': self.pk
+        })
