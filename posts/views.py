@@ -4,7 +4,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from django.template import RequestContext
 from posts.forms import CommentForm, PostForm
 from posts.models import Post, Author, PostView, AllaboutSikkim
 from posts.forms import EmailSignupForm
