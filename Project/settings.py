@@ -6,7 +6,7 @@ SECRET_KEY = ')3-_t%==r@&b01t)l!n28$ky4r=x*4)6*4xhs7^401t1ae+!b)'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['unravelling.herokuapp.com','*']
 
 
 INSTALLED_APPS = [
@@ -103,7 +103,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # Tinymce
 
 TINYMCE_DEFAULT_CONFIG = {
