@@ -1,3 +1,7 @@
 db.sqlite3
 media/*.jpg
 media/*.png
+
+# Environments
+.env
+env/
