@@ -40,28 +40,9 @@
               <li {% if request.path == create %}class="nav-item active"{% endif %}><a href="{% url 'post-create' %}" class="nav-link ">Create</a>
               </li>
               {% endif %}
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                </a>
-                {% if request.user.is_authenticated %}
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'account_logout' %}">
-                    <i class="fa fa-sign-out primary" aria-hidden="true"></i> Logout</a>
-                  <div class="dropdown-divider"></div>
-                </div>
-                {% else %}
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'account_login'%}"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
-                  <a class="dropdown-item" href="{% url 'account_signup' %}">
-                    <i class="fa fa-sign-out primary" aria-hidden="true"></i> Sign Up</a>
-                  <div class="dropdown-divider"></div>
-                </div>
-                {% endif %}
-              </li>
             </ul>
             <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
-            {% comment %} <ul class="langs navbar-text"><a href="#" class="active">EN</a><span>           </span><a href="#">ES</a></ul> {% endcomment %}
+            {% comment %} <ul class="langs navbar-text"><a href="#" class="active">EN</a><span></span><a href="#">ES</a></ul> {% endcomment %}
           </div>
         </div>
       </nav>
